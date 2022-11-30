@@ -8,6 +8,7 @@
 import { ref, reactive, onMounted } from 'vue';
 import axios from 'axios';
 import RecipesList from '@/components/RecipesList.vue';
+import RecipesTransformer from '@/transformer/RecipesTransformer.js';
 
 let recipes = reactive([]);
 
@@ -53,21 +54,10 @@ const loadData = async () => {
       }
     });
 
-    recipes.push(...parseRecipes(response.data.results));
+    recipes.push(...RecipesTransformer.fetchCollection(response.data.results));
   } catch (error) {
     console.log(error)
   }
-};
-
-const parseRecipes = (recipes) => {
-  return recipes.map(recipe => {
-    return {
-      id: recipe.id,
-      img: '',
-      name: recipe.properties.Name.title[0].plain_text,
-      img: recipe.cover?.file?.url || recipe.cover?.external?.url
-    }
-  })
 };
 
 loadData();
