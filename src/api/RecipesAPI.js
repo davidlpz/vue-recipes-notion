@@ -12,7 +12,7 @@ export default class RecipesAPI {
         method: 'post',
         url: `${this.baseUrl}databases/${databaseId}/query`,
         headers: {
-          'Authorization': 'secret_SnLYUFzP3Jyy3PvFGvkVbpUdFDyekQBMypArJpW91c2',
+          Authorization: 'secret_SnLYUFzP3Jyy3PvFGvkVbpUdFDyekQBMypArJpW91c2',
           'Content-Type': 'aplication/json',
           'Notion-Version': '2022-02-22'
         },
@@ -27,7 +27,26 @@ export default class RecipesAPI {
       });
       return RecipesTransformer.fetchCollection(response.data.results);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 }
+
+/*
+const loadBodyRecipes = async pageId => {
+  try {
+    const response = await axios({
+      method: 'get',
+      url: `https://api.notion.com/v1/blocks/${pageId}/children`,
+      headers: {
+        Authorization: 'secret_SnLYUFzP3Jyy3PvFGvkVbpUdFDyekQBMypArJpW91c2',
+        'Content-Type': 'aplication/json',
+        'Notion-Version': '2022-02-22',
+      },
+    });
+
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+}; */
