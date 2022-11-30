@@ -6,9 +6,8 @@
 
 <script setup>
 import { ref, reactive, onMounted } from 'vue';
-import axios from 'axios';
 import RecipesList from '@/components/RecipesList.vue';
-import RecipesTransformer from '@/transformer/RecipesTransformer.js';
+import RecipesAPI from '@/api/RecipesApi.js';
 
 let recipes = reactive([]);
 
@@ -33,36 +32,13 @@ const loadBodyRecipes = async (pageId) => {
 }
 
 const loadData = async () => {
-  const databaseId = '7a8652abd6954a2dbf09edfd820c4a97';
-
   try {
-    const response = await axios({
-      method: 'post',
-      url: `https://api.notion.com/v1/databases/${databaseId}/query`,
-      headers: {
-        'Authorization': 'secret_SnLYUFzP3Jyy3PvFGvkVbpUdFDyekQBMypArJpW91c2',
-        'Content-Type': 'aplication/json',
-        'Notion-Version': '2022-02-22'
-      },
-      data: {
-        filter: {
-          property: 'Name',
-          text: {
-            is_not_empty: true
-          }
-        }
-      }
-    });
-
-    recipes.push(...RecipesTransformer.fetchCollection(response.data.results));
+    const response = await new RecipesAPI().listRecipes();
+    recipes.push(...response);
   } catch (error) {
     console.log(error)
   }
 };
 
 loadData();
-
-const getName = (recipe) => {
-  return '';
-};
 </script>
