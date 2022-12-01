@@ -5,16 +5,15 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue';
+import { ref } from 'vue';
 import RecipesList from '@/components/RecipesList.vue';
 import RecipesAPI from '@/api/RecipesApi.js';
 
-let recipes = reactive([]);
+let recipes = ref([]);
 
 const loadData = async () => {
   try {
-    const response = await new RecipesAPI().listRecipes();
-    recipes.push(...response);
+    recipes.value = await new RecipesAPI().listRecipes();
   } catch (error) {
     console.log(error);
   }
