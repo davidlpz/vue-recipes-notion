@@ -4,7 +4,7 @@
       <!--<div class="recipe-img-container">
         <img v-if="recipe.img" :src="recipe.img" :alt="recipe.name">
       </div>-->
-      <h3>{{ recipe.emoji }} {{ recipe.name }}</h3>
+      <h3 @click="onClickHandler(recipe.id)">{{ recipe.emoji }} {{ recipe.name }}</h3>
     </div>
   </section>
 </template>
@@ -16,9 +16,18 @@ const props = defineProps({
     default: []
   }
 });
+
+const emit = defineEmits(['on-click-recipe']);
+
+const onClickHandler = id => {
+  emit('on-click-recipe', id);
+};
 </script>
 
 <style scoped>
+h3 {
+  cursor: pointer;
+}
 .recipe-item {
   display: flex;
 }
