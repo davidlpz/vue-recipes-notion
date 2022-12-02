@@ -8,7 +8,7 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import RecipesList from '@/components/RecipesList.vue';
-import RecipesAPI from '@/api/RecipesApi.js';
+import RecipesAPI from '@/api/RecipesAPI.js';
 
 const router = useRouter();
 let recipes = ref([]);
