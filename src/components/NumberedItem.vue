@@ -14,7 +14,7 @@ export default {
       default: 1
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -23,8 +23,8 @@ export default {
   align-items: flex-start;
   margin-bottom: 1rem;
   .numbered-position {
-    padding: .25rem .625rem;
-    font-size: .75rem;
+    padding: 0.25rem 0.625rem;
+    font-size: 0.75rem;
     font-weight: 700;
     border-radius: 100%;
     background-color: var(--main-text);

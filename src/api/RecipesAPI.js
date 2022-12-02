@@ -25,7 +25,7 @@ export default class RecipesAPI {
           }
         }
       });
-      
+
       return RecipesTransformer.fetchCollection(response.data.results);
     } catch (error) {
       console.log(error);

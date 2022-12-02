@@ -7,8 +7,8 @@
 
 <script>
 export default {
-  name: 'BulletItem',
-}
+  name: 'BulletItem'
+};
 </script>
 
 <style lang="scss" scoped>
@@ -18,13 +18,13 @@ export default {
   margin-bottom: 1rem;
   p {
     margin: 0;
-    margin-left: .5rem;
+    margin-left: 0.5rem;
     font-weight: 500;
-    font-size: .9rem;
+    font-size: 0.9rem;
     color: var(--main-text);
   }
   .check-bullet {
-    padding: .2rem;
+    padding: 0.2rem;
     border-radius: 100%;
     background: var(--main-text);
   }
