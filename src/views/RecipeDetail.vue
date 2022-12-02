@@ -5,6 +5,7 @@
     </div>
     <div class="recipe-body">
       <h1 class="recipe-title">{{ recipe.name }}</h1>
+      {{ recipe.body }}
     </div>
   </main>
 </template>
@@ -18,12 +19,27 @@ const route = useRoute();
 const recipes = ref([]);
 let recipe = ref({});
 
+const assembleRecipeBody = blocks => {
+  console.log(blocks)
+  return blocks
+    .map(block => {
+      const type = block.type
+      if (block[type].rich_text.length) {
+        const text = block[type].rich_text[0].text.content
+        return {
+          type,
+          text,
+        }
+      }
+    })
+}
 
 const loadData = async () => {
   try {
     recipes.value = await new RecipesAPI().listRecipes();
     recipe.value = recipes.value.find(item => item.id === route.params.id);
     const response = await new RecipesAPI().loadRecipeBody(route.params.id);
+    recipe.value.body = assembleRecipeBody(response);
   } catch (error) {
     console.log(error);
   }
