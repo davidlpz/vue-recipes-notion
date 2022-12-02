@@ -1,8 +1,12 @@
 <template>
   <section class="recipe-body">
-    <div v-for="block in blocks">
+    <component
+      v-for="(block, index) in blocks"
+      :is="getTagByBlock(block.type)"
+      :key="index"
+    >
       {{ block.text }}
-    </div>
+    </component>
   </section>
 </template>
 
@@ -13,6 +17,16 @@ const props = defineProps({
     default: []
   }
 });
+
+const getTagByBlock = type => {
+  const options = {
+    heading_2: 'h2',
+    heading_3: 'h3',
+    bulleted_list_item: 'p',
+    numbered_list_item: 'p',
+  }
+  return options[type]
+}
 </script>
 
 <style scoped>
