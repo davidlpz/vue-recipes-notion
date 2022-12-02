@@ -5,7 +5,7 @@
     </div>
     <div class="recipe-body">
       <h1 class="recipe-title">{{ recipe.name }}</h1>
-      <RecipeBody :recipe="recipe.body" />
+      <RecipeBody :blocks="recipe.body" />
     </div>
   </main>
 </template>
