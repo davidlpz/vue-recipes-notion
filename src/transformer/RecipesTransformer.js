@@ -8,4 +8,17 @@ export default class RecipesTransformer extends BaseTransformer {
       image: recipe.cover?.file?.url || recipe.cover?.external?.url
     };
   }
+
+  static assembleBody(blocks) {
+    return blocks.map(block => {
+      const type = block.type
+      if (block[type].rich_text.length) {
+        const text = block[type].rich_text[0].text.content
+        return {
+          type,
+          text
+        }
+      }
+    });
+  }
 }

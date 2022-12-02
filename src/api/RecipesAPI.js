@@ -44,7 +44,7 @@ export default class RecipesAPI {
         }
       });
 
-      return response.data.results;
+      return RecipesTransformer.assembleBody(response.data.results);
     } catch (error) {
       console.log(error);
     }
