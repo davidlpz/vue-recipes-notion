@@ -21,9 +21,9 @@ const loadData = async () => {
   }
 };
 
+loadData();
+
 const goToRecipeDetail = id => {
   router.push(`/recipe/${id}`);
 };
-
-loadData();
 </script>
