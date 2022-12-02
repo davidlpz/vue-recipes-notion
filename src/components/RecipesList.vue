@@ -4,7 +4,7 @@
       <!--<div class="recipe-img-container">
         <img v-if="recipe.img" :src="recipe.image" :alt="recipe.name">
       </div>-->
-      <h3 @click="onClickHandler(recipe.id)">{{ recipe.emoji }} {{ recipe.name }}</h3>
+      <h3 @click="onClickHandler(recipe.id)">{{ recipe.name }}</h3>
     </div>
   </section>
 </template>
