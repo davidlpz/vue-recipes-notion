@@ -1,6 +1,6 @@
 <template>
   <main class="recipe-detail">
-    <div class="image-wrapper">      
+    <div class="image-wrapper">
       <img class="recipe-image" :src="recipe.image" :alt="recipe.name" />
     </div>
     <div class="recipe-body">
@@ -11,10 +11,10 @@
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue';
+import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import RecipesAPI from '@/api/RecipesApi.js';
-import RecipeBody from '@/components/RecipeBody.vue'
+import RecipeBody from '@/components/RecipeBody.vue';
 
 const route = useRoute();
 const recipes = ref([]);

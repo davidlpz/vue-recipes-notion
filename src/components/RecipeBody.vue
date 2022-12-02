@@ -12,25 +12,25 @@
 </template>
 
 <script>
-import BulletItem from '@/components/BulletItem.vue'
+import BulletItem from '@/components/BulletItem.vue';
 import NumberedItem from '@/components/NumberedItem.vue';
 
 export default {
   name: 'RecipeBody',
   components: {
     BulletItem,
-    NumberedItem,
+    NumberedItem
   }
-}
+};
 </script>
 
-
 <script setup>
-
 const props = defineProps({
   blocks: {
     type: Array,
-    default: []
+    default: () => {
+      return [];
+    }
   }
 });
 
@@ -40,18 +40,14 @@ const getTagByBlock = type => {
     heading_3: 'h3',
     bulleted_list_item: 'BulletItem',
     numbered_list_item: 'NumberedItem'
-  }
+  };
   return options[type];
-}
+};
 
 const getNumberPosition = textBlock => {
-  const numberedItems = props.blocks.filter(
-    block => block.type === 'numbered_list_item'
-  );
-  return numberedItems.findIndex(item => item.text === textBlock) + 1
-}
+  const numberedItems = props.blocks.filter(block => block.type === 'numbered_list_item');
+  return numberedItems.findIndex(item => item.text === textBlock) + 1;
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
