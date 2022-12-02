@@ -1,9 +1,7 @@
 <template>
   <section class="recipe-list">
     <div v-for="recipe in recipes" :key="recipe.id" class="recipe-item">
-      <!--<div class="recipe-img-container">
-        <img v-if="recipe.img" :src="recipe.image" :alt="recipe.name">
-      </div>-->
+      <img :src="recipe.image" :alt="recipe.name" @click="onClickHandler(recipe.id)" />
       <h3 @click="onClickHandler(recipe.id)">{{ recipe.name }}</h3>
     </div>
   </section>
@@ -13,7 +11,9 @@
 const props = defineProps({
   recipes: {
     type: Array,
-    default: []
+    default: () => {
+      return [];
+    }
   }
 });
 
@@ -24,23 +24,27 @@ const onClickHandler = id => {
 };
 </script>
 
-<style scoped>
-h3 {
-  cursor: pointer;
+<style lang="scss" scoped>
+.recipe-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 180px) 19%;
+  gap: 25px;
 }
 .recipe-item {
-  display: flex;
-}
-.recipe-img-container {
-  width: 100px;
-  height: 100px;
-  overflow: hidden;
-}
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  max-height: 100%;
-  object-fit: contain;
+  img {
+    display: block;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+  h3 {
+    margin: 0.75rem 0 0.5rem;
+    color: var(--main-text);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+  }
 }
 </style>
