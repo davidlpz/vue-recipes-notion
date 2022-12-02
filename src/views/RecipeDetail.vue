@@ -30,18 +30,29 @@ const loadData = async () => {
   }
 };
 
-
 loadData();
 </script>
 
-<style scoped>
-.image-wrapper {
-  width: 100%;
-  height: 375px;
-}
-.recipe-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+<style lang="scss" scoped>
+.recipe-detail {
+  .image-wrapper {
+    width: 100%;
+    height: 375px;
+  }
+  .recipe-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .recipe-body-wrapper {
+    height: 100%;
+    background-color: white;
+    padding: 44px 24px;
+    h1 {
+      color: #3e5481;
+      font-size: 17px;
+      font-weight: bold;
+    }
+  }
 }
 </style>

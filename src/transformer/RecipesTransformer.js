@@ -11,14 +11,14 @@ export default class RecipesTransformer extends BaseTransformer {
 
   static assembleBody(blocks) {
     return blocks.map(block => {
-      const type = block.type
-      if (block[type].rich_text.length) {
+      const type = block.type;
+      if (block[type].rich_text?.length) {
         const text = block[type].rich_text[0].text.content
         return {
           type,
           text
         }
       }
-    });
+    }).filter(Boolean);
   }
 }
