@@ -13,7 +13,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
-import RecipesAPI from '@/api/RecipesApi.js';
+import RecipesAPI from '@/api/RecipesAPI.js';
 import RecipeBody from '@/components/RecipeBody.vue';
 
 const route = useRoute();
