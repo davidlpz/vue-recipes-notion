@@ -5,7 +5,7 @@
     </div>
     <div class="recipe-body">
       <h1 class="recipe-title">{{ recipe.name }}</h1>
-      {{ recipe.body }}
+      <RecipeBody :recipe="recipe.body" />
     </div>
   </main>
 </template>
@@ -14,6 +14,7 @@
 import { ref, reactive } from 'vue';
 import { useRoute } from 'vue-router';
 import RecipesAPI from '@/api/RecipesApi.js';
+import RecipeBody from '@/components/RecipeBody.vue'
 
 const route = useRoute();
 const recipes = ref([]);
