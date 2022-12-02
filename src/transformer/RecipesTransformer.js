@@ -5,7 +5,7 @@ export default class RecipesTransformer extends BaseTransformer {
     return {
       id: recipe.id,
       name: recipe.properties.Name.title[0].plain_text,
-      img: recipe.cover?.file?.url || recipe.cover?.external?.url
+      image: recipe.cover?.file?.url || recipe.cover?.external?.url
     };
   }
 }
